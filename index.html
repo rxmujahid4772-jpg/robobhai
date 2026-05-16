@@ -8,7 +8,6 @@
 <style>
   :root {
     --bg: #050a0f;
-    --panel: #0a1520;
     --border: #0ff3;
     --accent: #00f5ff;
     --accent2: #ff006e;
@@ -43,114 +42,6 @@
     z-index: 0;
   }
 
-  /* SETUP SCREEN */
-  #setup-screen {
-    position: fixed;
-    inset: 0;
-    background: #050a0fee;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(8px);
-  }
-
-  .setup-box {
-    background: linear-gradient(135deg, #0a1520, #0d1f30);
-    border: 1px solid var(--accent);
-    border-radius: 20px;
-    padding: 36px;
-    width: 90%;
-    max-width: 420px;
-    box-shadow: 0 0 60px #00f5ff22;
-    text-align: center;
-  }
-
-  .setup-box .icon { font-size: 52px; margin-bottom: 14px; animation: float 3s ease-in-out infinite; }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-  }
-
-  .setup-box h2 {
-    font-family: 'Orbitron', monospace;
-    font-size: 22px;
-    color: var(--accent);
-    text-shadow: 0 0 20px var(--accent);
-    margin-bottom: 6px;
-    letter-spacing: 2px;
-  }
-
-  .badge {
-    display: inline-block;
-    background: #00ff8822;
-    border: 1px solid var(--green);
-    color: var(--green);
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 20px;
-    margin-bottom: 18px;
-    letter-spacing: 1px;
-  }
-
-  .setup-box p {
-    color: var(--muted);
-    font-size: 13px;
-    margin-bottom: 22px;
-    line-height: 1.7;
-  }
-
-  .setup-box p a {
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px dashed var(--accent);
-  }
-
-  .setup-box input {
-    width: 100%;
-    background: #020810;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 13px 16px;
-    color: var(--accent);
-    font-family: 'Exo 2', sans-serif;
-    font-size: 13px;
-    letter-spacing: 1px;
-    outline: none;
-    margin-bottom: 14px;
-    transition: border-color 0.3s, box-shadow 0.3s;
-  }
-
-  .setup-box input:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 15px #00f5ff33;
-  }
-
-  .setup-box input::placeholder { color: var(--muted); letter-spacing: 0; }
-
-  .btn-start {
-    width: 100%;
-    background: linear-gradient(135deg, #00f5ff22, #00f5ff44);
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    font-family: 'Orbitron', monospace;
-    font-size: 13px;
-    letter-spacing: 2px;
-    padding: 13px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s;
-    text-shadow: 0 0 10px var(--accent);
-  }
-
-  .btn-start:hover {
-    background: linear-gradient(135deg, #00f5ff44, #00f5ff66);
-    box-shadow: 0 0 25px #00f5ff55;
-    transform: translateY(-1px);
-  }
-
-  /* HEADER */
   header {
     position: relative;
     z-index: 10;
@@ -170,7 +61,6 @@
     border-radius: 12px;
     display: flex; align-items: center; justify-content: center;
     font-size: 22px;
-    box-shadow: var(--glow);
     animation: pulse 2s ease-in-out infinite;
   }
 
@@ -206,7 +96,6 @@
     50% { opacity: 0.3; }
   }
 
-  /* CHAT */
   #chat-area {
     flex: 1;
     overflow-y: auto;
@@ -274,6 +163,11 @@
 
   .welcome .big-icon { font-size: 58px; margin-bottom: 14px; animation: float 3s ease-in-out infinite; }
 
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
   .welcome h2 {
     font-family: 'Orbitron', monospace;
     font-size: 19px;
@@ -307,7 +201,6 @@
     50% { transform: translateY(-6px); opacity: 1; }
   }
 
-  /* INPUT */
   .input-area {
     position: relative;
     z-index: 10;
@@ -365,79 +258,34 @@
 </head>
 <body>
 
-<!-- Setup Screen -->
-<div id="setup-screen">
-  <div class="setup-box">
-    <div class="icon">🤖</div>
-    <h2>ROBOBHAI</h2>
-    <div class="badge">✅ সম্পূর্ণ ফ্রি — Groq AI</div>
-    <p>আপনার <strong style="color:var(--accent)">Groq API Key</strong> দিন।<br>
-    ফ্রিতে পাবেন 👉 <a href="https://console.groq.com" target="_blank">console.groq.com</a></p>
-    <input type="password" id="api-key-input" placeholder="gsk_..." autocomplete="off">
-    <button class="btn-start" onclick="startChat()">⚡ ACTIVATE ROBOBHAI</button>
-  </div>
-</div>
-
-<!-- Header -->
 <header>
   <div class="robot-icon">🤖</div>
   <div class="header-info">
     <h1>ROBOBHAI</h1>
     <div class="status">
       <div class="status-dot"></div>
-      <span>ONLINE — POWERED BY GROQ (FREE)</span>
+      <span>ONLINE — READY TO CHAT</span>
     </div>
   </div>
-  <button onclick="resetKey()" style="margin-left:auto;background:transparent;border:1px solid #0ff3;color:var(--muted);font-size:11px;padding:5px 10px;border-radius:8px;cursor:pointer;letter-spacing:1px;">🔑 KEY</button>
 </header>
 
-<!-- Chat -->
 <div id="chat-area">
   <div class="welcome">
     <div class="big-icon">🤖</div>
     <h2>আমি RoboBhai!</h2>
-    <p>আপনার AI বন্ধু — সম্পূর্ণ ফ্রি!<br>যেকোনো প্রশ্ন করুন, উত্তর দিতে প্রস্তুত! 💬</p>
+    <p>আপনার AI বন্ধু!<br>যেকোনো প্রশ্ন করুন, উত্তর দিতে প্রস্তুত! 💬</p>
   </div>
 </div>
 
-<!-- Input -->
 <div class="input-area">
   <textarea id="user-input" placeholder="RoboBhai-কে কিছু জিজ্ঞেস করুন..." rows="1"
     onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
   <button id="send-btn" onclick="sendMessage()">➤</button>
 </div>
-<div class="footer-text">Powered by Groq AI · RoboBhai v2.0 · FREE ✅</div>
+<div class="footer-text">Powered by Groq AI · RoboBhai v3.0 🤖</div>
 
 <script>
-  let API_KEY = "";
   let messages = [];
-
-  // পুরনো key আছে কিনা চেক করো
-  window.onload = function() {
-    const saved = localStorage.getItem("robobhai_key");
-    if (saved) {
-      API_KEY = saved;
-      document.getElementById("setup-screen").style.display = "none";
-      document.getElementById("user-input").focus();
-    }
-  };
-
-  function startChat() {
-    const key = document.getElementById("api-key-input").value.trim();
-    if (!key) {
-      alert("API Key দিন!");
-      return;
-    }
-    API_KEY = key;
-    localStorage.setItem("robobhai_key", key); // browser-এ save করো
-    document.getElementById("setup-screen").style.display = "none";
-    document.getElementById("user-input").focus();
-  }
-
-  function resetKey() {
-    localStorage.removeItem("robobhai_key");
-    location.reload();
-  }
 
   function handleKey(e) {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -458,12 +306,9 @@
 
     const div = document.createElement("div");
     div.className = `message ${role}`;
-
     const avatar = role === "bot" ? "🤖" : "👤";
-    const avatarClass = role === "bot" ? "bot" : "user";
-
     div.innerHTML = `
-      <div class="avatar ${avatarClass}">${avatar}</div>
+      <div class="avatar ${role}">${avatar}</div>
       <div class="bubble ${role}">${text.replace(/\n/g, "<br>")}</div>
     `;
     chat.appendChild(div);
@@ -502,32 +347,13 @@
 
     addMessage("user", text);
     messages.push({ role: "user", content: text });
-
     showTyping();
 
     try {
-      const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      const res = await fetch("/api/chat", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${API_KEY}`
-        },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          max_tokens: 1000,
-          messages: [
-            {
-              role: "system",
-              content: `তুমি RoboBhai — একটি বন্ধুসুলভ বাংলা AI সহকারী।
-নিয়ম:
-- সবসময় বাংলায় কথা বলবে
-- সহজ ও বন্ধুসুলভ ভাষা ব্যবহার করবে
-- উত্তর ছোট ও কার্যকর রাখবে
-- মাঝে মাঝে ইমোজি ব্যবহার করবে`
-            },
-            ...messages
-          ]
-        })
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages })
       });
 
       const data = await res.json();
@@ -537,12 +363,12 @@
         const reply = data.choices[0].message.content;
         messages.push({ role: "assistant", content: reply });
         addMessage("bot", reply);
-      } else if (data.error) {
-        addMessage("bot", `❌ Error: ${data.error.message}`);
+      } else {
+        addMessage("bot", "❌ সমস্যা হয়েছে। আবার চেষ্টা করুন।");
       }
     } catch (err) {
       removeTyping();
-      addMessage("bot", "❌ সংযোগে সমস্যা। API Key চেক করুন।");
+      addMessage("bot", "❌ সংযোগে সমস্যা হয়েছে।");
     }
 
     btn.disabled = false;
